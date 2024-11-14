@@ -19,6 +19,7 @@ use App\Http\Livewire\Tables;
 use App\Http\Livewire\VirtualReality;
 use GuzzleHttp\Middleware;
 use App\Models\Usuario;
+use App\Http\Controllers\RecursoExpositorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,6 @@ Route::get('user-management', UserManagement::class)->middleware('auth')->name('
 
 Route::group(['middleware' => 'auth'], function () {
 Route::get('dashboard', Dashboard::class)->name('dashboard');
-Route::get('billing', Billing::class)->name('billing');
 Route::get('profile', Profile::class)->name('profile');
 Route::get('tables', Tables::class)->name('tables');
 Route::get('notifications', Notifications::class)->name("notifications");
@@ -59,5 +59,9 @@ Route::get('rtl', RTL::class)->name('rtl');
 
 
 Route::get('user', [UsuarioController::class, 'usuario']);
+//
 
 });
+Route::resource('expositor', RecursoExpositorController::class);
+
+
