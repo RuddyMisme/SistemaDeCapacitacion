@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CertificadoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Livewire\Auth\ForgotPassword;
 use App\Http\Livewire\Auth\Login;
@@ -59,5 +60,15 @@ Route::get('rtl', RTL::class)->name('rtl');
 
 
 Route::get('user', [UsuarioController::class, 'usuario']);
+
+Route::get('create', [UsuarioController::class, 'create']);
+
+Route::post('user', [UsuarioController::class, 'store']);
+
+// Route::get('/user/{use}', function($use){
+//     return "Aqui se mostrar el el post {$use}";
+// });
+Route::get('/user/{user}', [UsuarioController::class, 'show']);
+
 
 });
