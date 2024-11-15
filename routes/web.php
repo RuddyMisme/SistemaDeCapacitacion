@@ -18,8 +18,13 @@ use App\Http\Livewire\StaticSignIn;
 use App\Http\Livewire\StaticSignUp;
 use App\Http\Livewire\Tables;
 use App\Http\Livewire\VirtualReality;
+use App\Models\RecursoExpositor;
 use GuzzleHttp\Middleware;
 use App\Models\Usuario;
+
+/*
+|---------------
+use App\Http\Controllers\RecursoExpositorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +54,6 @@ Route::get('user-management', UserManagement::class)->middleware('auth')->name('
 
 Route::group(['middleware' => 'auth'], function () {
 Route::get('dashboard', Dashboard::class)->name('dashboard');
-Route::get('billing', Billing::class)->name('billing');
 Route::get('profile', Profile::class)->name('profile');
 Route::get('tables', Tables::class)->name('tables');
 Route::get('notifications', Notifications::class)->name("notifications");
@@ -57,18 +61,15 @@ Route::get('virtual-reality', VirtualReality::class)->name('virtual-reality');
 Route::get('static-sign-in', StaticSignIn::class)->name('static-sign-in');
 Route::get('static-sign-up', StaticSignUp::class)->name('static-sign-up');
 Route::get('rtl', RTL::class)->name('rtl');
+});
 
+Route::resource('expositor', RecursoExpositorController::class);
 
 Route::get('user', [UsuarioController::class, 'usuario']);
-
 Route::get('create', [UsuarioController::class, 'create']);
-
 Route::post('user', [UsuarioController::class, 'store']);
 
 // Route::get('/user/{use}', function($use){
 //     return "Aqui se mostrar el el post {$use}";
 // });
 Route::get('/user/{user}', [UsuarioController::class, 'show']);
-
-
-});
