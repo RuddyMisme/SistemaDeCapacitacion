@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CertificadoController;
+use App\Http\Controllers\RecursoExpositorController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Livewire\Auth\ForgotPassword;
 use App\Http\Livewire\Auth\Login;
@@ -61,15 +62,37 @@ Route::get('virtual-reality', VirtualReality::class)->name('virtual-reality');
 Route::get('static-sign-in', StaticSignIn::class)->name('static-sign-in');
 Route::get('static-sign-up', StaticSignUp::class)->name('static-sign-up');
 Route::get('rtl', RTL::class)->name('rtl');
+// Route::resource('/usuarios', UsuarioController::class);
 });
+
+Route::get('/usuario', [UsuarioController::class,'index'])->name('usuario.index');
+Route::get('/registro', [UsuarioController::class,'create'])->name('usuario.create');
+Route::put('/edit/{$id}', [UsuarioController::class,'edit'])->name('usuario.edit');
+Route::DELETE('/eliminar/{$id}', [UsuarioController::class,'destroy'])->name('usuario.destroy');
 
 Route::resource('expositor', RecursoExpositorController::class);
 
-Route::get('user', [UsuarioController::class, 'usuario']);
-Route::get('create', [UsuarioController::class, 'create']);
-Route::post('user', [UsuarioController::class, 'store']);
 
-// Route::get('/user/{use}', function($use){
-//     return "Aqui se mostrar el el post {$use}";
-// });
-Route::get('/user/{user}', [UsuarioController::class, 'show']);
+
+
+
+// Route::get('/usuarios', [UsuarioController::class, 'index']);
+/* Route::resource('/usuarios', [UsuarioController::class, 'create']);
+Route::resource('/usuarios', [UsuarioController::class, 'store']);
+Route::resource('/usuarios', [UsuarioController::class, 'show']);
+Route::resource('/usuarios', [UsuarioController::class, 'edit']);
+Route::resource('/usuarios', [UsuarioController::class, 'update']);
+Route::resource('/usuarios', [UsuarioController::class, 'destroy']); */
+
+
+
+// Route::get('create', [UsuarioController::class, 'create']);
+// Route::post('user', [UsuarioController::class, 'store']);
+
+// // Route::get('/user/{use}', function($use){
+// //     return "Aqui se mostrar el el post {$use}";
+// // });
+//  Route::get('/user/{user}', [UsuarioController::class, 'show']);
+
+// // nuevo
+// Route::resource('usuarios', UsuarioController::class);
